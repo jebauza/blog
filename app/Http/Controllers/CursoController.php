@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCursoRequest;
 use App\Models\Curso;
 use Illuminate\Http\Request;
 
@@ -35,22 +36,18 @@ class CursoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCursoRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'categoria' => 'required',
-        ]);
-
-        $curso = new Curso();
+        /* $curso = new Curso();
 
         $curso->name = $request->name;
         $curso->description = $request->description;
         $curso->categoria = $request->categoria;
-        $curso->save();
+        $curso->save(); */
 
-        return redirect()->route('cursos.show', $curso->id);
+        $curso = Curso::create($request->all());
+
+        return redirect()->route('cursos.show', $curso);
     }
 
     /**
@@ -84,12 +81,19 @@ class CursoController extends Controller
      */
     public function update(Request $request, Curso $curso)
     {
-        $curso->name = $request->name;
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'categoria' => 'required',
+        ]);
+
+        /* $curso->name = $request->name;
         $curso->description = $request->description;
         $curso->categoria = $request->categoria;
-        $curso->save();
+        $curso->save(); */
+        $curso->update($request->all());
 
-        return redirect()->route('cursos.show', $curso->id);
+        return redirect()->route('cursos.show', $curso);
     }
 
     /**
@@ -98,8 +102,10 @@ class CursoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Curso $curso)
     {
-        //
+        $curso->delete();
+
+        return redirect()->route('cursos.index');
     }
 }

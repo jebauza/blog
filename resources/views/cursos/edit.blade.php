@@ -5,28 +5,43 @@
 @section('content')
 
     <h1>En esta pagina podras editar un curso</h1>
-    <form action="{{ route('cursos.update', $curso->id) }}" method="POST">
+    <form action="{{ route('cursos.update', $curso->slug) }}" method="POST">
         @csrf
         @method('put')
         <label>
             Nombre:
             <br>
-            <input type="text" name="name" value="{{ $curso->name }}">
+            <input type="text" name="name" value="{{ old('name', $curso->name) }}">
         </label>
+        @error('name')
+        <br>
+            <small>*{{$message}}</small>
+        <br>
+        @enderror
 
         <br>
         <label>
             Descripcion:
             <br>
-            <textarea name="description" rows="5">{{ $curso->description }}</textarea>
+            <textarea name="description" rows="5">{{ old('description', $curso->description) }}</textarea>
         </label>
+        @error('description')
+        <br>
+            <small>*{{$message}}</small>
+        <br>
+        @enderror
 
         <br>
         <label>
             Categoria:
             <br>
-            <input type="text" name="categoria" value="{{ $curso->categoria }}">
+            <input type="text" name="categoria" value="{{ old('categoria', $curso->categoria) }}">
         </label>
+        @error('categoria')
+        <br>
+            <small>*{{$message}}</small>
+        <br>
+        @enderror
 
         <br>
         <button type="submit">Actualizar formulario</button>

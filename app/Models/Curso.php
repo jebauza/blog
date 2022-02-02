@@ -10,4 +10,13 @@ class Curso extends Model
     use HasFactory;
 
     protected $table = "cursos";
+
+    // protected $fillable = ['name', 'description', 'categoria'];
+    protected $guarded = []; // sn filiables todos los demas campos execto este
+
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
