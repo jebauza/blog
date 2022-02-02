@@ -12,13 +12,23 @@
             <br>
             <input type="text" name="name">
         </label>
+        @error('name')
+        <br>
+            <small>*{{$message}}</small>
+        <br>
+        @enderror
 
         <br>
         <label>
             Descripcion:
             <br>
-            <textarea name="descriptio" rows="5"></textarea>
+            <textarea name="description" rows="5"></textarea>
         </label>
+        @error('description')
+        <br>
+            <small>*{{$message}}</small>
+        <br>
+        @enderror
 
         <br>
         <label>
@@ -26,6 +36,11 @@
             <br>
             <input type="text" name="categoria">
         </label>
+        @error('categoria')
+        <br>
+            <small>*{{$message}}</small>
+        <br>
+        @enderror
 
         <br>
         <button type="submit">Enviar formulario</button>
