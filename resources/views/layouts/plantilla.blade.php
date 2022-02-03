@@ -8,14 +8,23 @@
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
     <!-- favicon -->
     <!-- estilos -->
+    <style>
+        .active {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
 
 </head>
 <body>
     <!-- header -->
+    @include('layouts.partials.header')
+
     <!-- nav -->
     @yield('content')
 
     <!-- footer -->
+    @include('layouts.partials.footer')
 
     <!-- scrip -->
 </body>

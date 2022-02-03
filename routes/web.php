@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 
 // Route::resource('asignaturas', CursoController::class)->parameters(['asignaturas' => 'curso'])->names('cursos');
 
@@ -29,4 +29,7 @@ Route::put('/cursos/{curso}', [CursoController::class, 'update'])->name('cursos.
 Route::delete('/cursos/{curso}', [CursoController::class, 'destroy'])->name('cursos.destroy'); */
 
 Route::resource('cursos', CursoController::class);
+
+
+Route::view('nosotros', 'nosotros')->name('nosotros');
 
