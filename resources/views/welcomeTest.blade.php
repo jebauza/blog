@@ -1,8 +1,4 @@
-<x-app-layout>
-    
-</x-app-layout>
-
-{{-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -61,4 +57,4 @@
 
         <script src="{{ mix('js/app.js') }}"></script>
     </body>
-</html> --}}
+</html>
