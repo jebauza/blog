@@ -23,7 +23,8 @@
     </head>
 
     @php
-        $color = 'red'
+        $color = 'red';
+        $alert = 'alert2';
     @endphp
 
     <body>
@@ -36,7 +37,7 @@
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi ex aut nobis nihil nesciunt fugit magnam perspiciatis consectetur enim, excepturi deserunt eius iste adipisci rerum expedita sed deleniti natus quis.
                 </x-alert>
 
-                <x-alert2 color="blue">
+                <x-alert2 color="blue" class="mb-4">
 
                     <x-slot name="title">
                         Titulo de prueba
@@ -44,6 +45,14 @@
 
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi excepturi et fugit non magni necessitatibus sed, quos nisi voluptatibus tempore quo officia neque aliquam corporis error aut eligendi unde in.
                 </x-alert2>
+
+                <x-dynamic-component :component="$alert">
+                    <x-slot name="title">
+                        Titulo de prueba
+                    </x-slot>
+
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi excepturi et fugit non magni necessitatibus sed, quos nisi voluptatibus tempore quo officia neque aliquam corporis error aut eligendi unde in.
+                </x-dynamic-component>
         </div>
 
         <script src="{{ mix('js/app.js') }}"></script>
